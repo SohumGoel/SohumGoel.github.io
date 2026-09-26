@@ -8,6 +8,7 @@
   --color-line: #2a302d;
   --color-accent: #3ddc84;
   --color-accent-dim: rgb(61 220 132 / 0.1);
+  --color-linkedin: #70b5f9; /* LinkedIn's link blue for dark backgrounds */
 
   /* Same stacks as leerob.com: Iowan Old Style for reading, system sans for UI labels. */
   --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
@@ -54,4 +55,15 @@ html.js .reveal.is-visible {
     transform: none;
     transition: none;
   }
+}
+
+/* Brand-logo cursors on profile links, same technique as leerob.com's company links. */
+.cursor-linkedin {
+  cursor: url(/cursors/linkedin.svg) 10 10, pointer;
+}
+.cursor-github {
+  cursor: url(/cursors/github.svg) 10 10, pointer;
+}
+.cursor-mail {
+  cursor: url(/cursors/mail.svg) 11 9, pointer;
 }

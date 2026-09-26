@@ -62,7 +62,9 @@ export default function Home() {
                   </li>
                 ))}
               </ol>
-              <MoreLink href={profile.github}>More on GitHub</MoreLink>
+              <MoreLink href={profile.github} className="cursor-github">
+                More on GitHub
+              </MoreLink>
             </Section>
 
             <Footer />
@@ -94,13 +96,13 @@ function Sidebar() {
       </div>
 
       <ul className="mt-8 flex items-center gap-5" aria-label="Links">
-        <IconLink href={profile.github} label="GitHub">
+        <IconLink href={profile.github} label="GitHub" className="cursor-github hover:text-fg">
           <GitHubIcon className="h-5 w-5" />
         </IconLink>
-        <IconLink href={profile.linkedin} label="LinkedIn">
+        <IconLink href={profile.linkedin} label="LinkedIn" className="cursor-linkedin hover:text-linkedin">
           <LinkedInIcon className="h-5 w-5" />
         </IconLink>
-        <IconLink href="#contact" label="Email">
+        <IconLink href="#contact" label="Email" className="cursor-mail hover:text-accent">
           <MailIcon className="h-5 w-5" />
         </IconLink>
         <li>
@@ -214,13 +216,13 @@ function ProjectRow({ project: p }: { project: Project }) {
   );
 }
 
-function MoreLink({ href, children }: { href: string; children: React.ReactNode }) {
+function MoreLink({ href, className = "", children }: { href: string; className?: string; children: React.ReactNode }) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="group mt-12 inline-flex items-center font-medium text-fg"
+      className={`group mt-12 inline-flex items-center font-medium text-fg ${className}`}
     >
       <span className="border-b border-transparent pb-px transition group-hover:border-accent">{children}</span>
       <ArrowUpRight className="ml-1 h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -228,7 +230,17 @@ function MoreLink({ href, children }: { href: string; children: React.ReactNode 
   );
 }
 
-function IconLink({ href, label, children }: { href: string; label: string; children: React.ReactNode }) {
+function IconLink({
+  href,
+  label,
+  className = "",
+  children,
+}: {
+  href: string;
+  label: string;
+  className?: string;
+  children: React.ReactNode;
+}) {
   const external = href.startsWith("http");
   return (
     <li>
@@ -238,7 +250,7 @@ function IconLink({ href, label, children }: { href: string; label: string; chil
         title={label}
         target={external ? "_blank" : undefined}
         rel={external ? "noreferrer" : undefined}
-        className="block text-muted transition-colors hover:text-fg"
+        className={`block text-muted transition-colors ${className}`}
       >
         {children}
       </a>
@@ -254,11 +266,11 @@ function Footer() {
         <Email
           user={profile.emailUser}
           domain={profile.emailDomain}
-          className="mt-3 inline-block text-lg text-accent underline decoration-accent/40 underline-offset-4 sm:text-xl"
+          className="cursor-mail mt-3 inline-block text-lg text-accent underline decoration-accent/40 underline-offset-4 sm:text-xl"
         />
         <p className="mt-2 text-sm">
           Or find me on{" "}
-          <a href={profile.linkedin} target="_blank" rel="noreferrer" className="text-fg hover:text-accent">
+          <a href={profile.linkedin} target="_blank" rel="noreferrer" className="cursor-linkedin text-linkedin hover:underline">
             LinkedIn
           </a>
           .
