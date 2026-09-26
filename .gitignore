@@ -9,3 +9,6 @@ next-env.d.ts
 # only the redacted public/Sohum-Goel-Resume.pdf ships.
 resume/*
 !resume/.gitkeep
+
+# Private context for Claude Code; never pushed.
+CLAUDE.md
