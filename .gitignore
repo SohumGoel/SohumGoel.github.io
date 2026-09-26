@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+.DS_Store
+
+# Drop the resume PDF here under any name. It has the phone number, so it is never committed;
+# only the redacted public/Sohum-Goel-Resume.pdf ships.
+resume/*
+!resume/.gitkeep
