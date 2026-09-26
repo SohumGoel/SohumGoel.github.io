@@ -1,5 +1,6 @@
 import Nav from "@/components/Nav";
 import Reveal from "@/components/Reveal";
+import Email from "@/components/Email";
 import Spotlight from "@/components/Spotlight";
 import { ArrowUpRight, GitHubIcon, LinkedInIcon, MailIcon } from "@/components/Icons";
 import { about, campusPhoto, experience, profile, projects, type Job, type Project } from "@/content/site";
@@ -99,7 +100,7 @@ function Sidebar() {
         <IconLink href={profile.linkedin} label="LinkedIn">
           <LinkedInIcon className="h-5 w-5" />
         </IconLink>
-        <IconLink href={`mailto:${profile.email}`} label="Email">
+        <IconLink href="#contact" label="Email">
           <MailIcon className="h-5 w-5" />
         </IconLink>
         <li>
@@ -250,12 +251,11 @@ function Footer() {
     <footer id="contact" className="pb-16 sm:pb-0">
       <Reveal>
         <p className="text-[1.45rem] font-semibold tracking-[-0.02em] text-fg">Get in touch</p>
-        <a
-          href={`mailto:${profile.email}`}
-          className="mt-3 inline-block text-lg text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:text-accent sm:text-xl"
-        >
-          {profile.email}
-        </a>
+        <Email
+          user={profile.emailUser}
+          domain={profile.emailDomain}
+          className="mt-3 inline-block text-lg text-accent underline decoration-accent/40 underline-offset-4 sm:text-xl"
+        />
         <p className="mt-2 text-sm">
           Or find me on{" "}
           <a href={profile.linkedin} target="_blank" rel="noreferrer" className="text-fg hover:text-accent">

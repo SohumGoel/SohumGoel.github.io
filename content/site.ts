@@ -7,7 +7,9 @@ export const profile = {
   role: "AI Engineer · CMU MS ECE ’27",
   tagline:
     "I build LLM agents, RAG pipelines, and ML services, plus the monitoring that tells you when they break.",
-  email: "sohumg@andrew.cmu.edu",
+  // Split so the full address never appears in the repo or the page HTML (anti-scraper).
+  emailUser: "sohumg",
+  emailDomain: "andrew.cmu.edu",
   github: "https://github.com/SohumGoel",
   linkedin: "https://www.linkedin.com/in/sohumgoel",
   resume: "/Sohum-Goel-Resume.pdf",
