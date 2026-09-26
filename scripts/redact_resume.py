@@ -96,6 +96,7 @@ def draw_contact_line(page: fitz.Page, plan: dict) -> None:
 
 
 def main() -> int:
+    INBOX.mkdir(exist_ok=True)
     pdfs = sorted(INBOX.glob("*.pdf"), key=lambda f: f.stat().st_mtime)
     if not pdfs:
         print("No PDF in resume/. Export the resume to PDF and drop it there.")
