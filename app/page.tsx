@@ -19,7 +19,7 @@ export default function Home() {
       <div className="relative z-10 mx-auto min-h-screen max-w-screen-xl px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
         <div className="lg:flex lg:justify-between lg:gap-8">
           <Sidebar />
-          <main id="content" className="pt-24 lg:w-[54%] lg:py-24">
+          <main id="content" className="max-w-[40rem] pt-24 lg:w-[54%] lg:max-w-none lg:py-24">
             <Section id="about" label="About" hideTitle>
               <div className="space-y-4">
                 {about.map((p) => (
@@ -77,7 +77,7 @@ export default function Home() {
 
 function Sidebar() {
   return (
-    <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[46%] lg:flex-col lg:justify-between lg:py-24">
+    <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[46%] lg:flex-col lg:justify-between lg:py-24 short:py-16">
       <div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -85,7 +85,7 @@ function Sidebar() {
           alt={profile.name}
           width={160}
           height={160}
-          className="mb-8 h-32 w-32 rounded-full object-cover ring-1 ring-line sm:h-40 sm:w-40"
+          className="mb-8 h-32 w-32 rounded-full object-cover ring-1 ring-line sm:h-40 sm:w-40 short:mb-6 short:h-28 short:w-28"
         />
         <h1 className="text-[2.65rem] font-semibold leading-tight tracking-[-0.02em] text-fg">
           <a href="/">{profile.name}</a>
@@ -95,7 +95,7 @@ function Sidebar() {
         <Nav />
       </div>
 
-      <ul className="mt-8 flex items-center gap-5" aria-label="Links">
+      <ul className="-ml-2 mt-8 flex items-center gap-1" aria-label="Links">
         <IconLink href={profile.github} label="GitHub" className="cursor-github hover:text-fg">
           <GitHubIcon className="h-5 w-5" />
         </IconLink>
@@ -110,7 +110,7 @@ function Sidebar() {
             href={profile.resume}
             target="_blank"
             rel="noreferrer"
-            className="ml-1 rounded border border-accent/40 px-3 py-1.5 font-ui text-xs text-accent transition-colors hover:bg-accent-dim"
+            className="ml-3 rounded border border-accent/40 px-3 py-1.5 font-ui text-xs text-accent transition-colors hover:bg-accent-dim"
           >
             Résumé ↗
           </a>
@@ -135,8 +135,8 @@ function Section({
     <section id={id} aria-label={label} className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
       {/* Sticky on small screens; a plain heading on desktop (About's is hidden there, the sidebar covers it). */}
       <div
-        className={`sticky top-0 z-20 -mx-6 mb-4 w-screen bg-bg/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:static lg:mx-0 lg:mb-10 lg:w-auto lg:bg-transparent lg:p-0 lg:backdrop-blur-none ${
-          hideTitle ? "lg:sr-only" : ""
+        className={`sticky top-0 z-20 -mx-6 mb-4 w-screen bg-bg/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 ${
+          hideTitle ? "lg:sr-only" : "lg:static lg:mx-0 lg:mb-10 lg:w-auto lg:bg-transparent lg:p-0 lg:backdrop-blur-none"
         }`}
       >
         <h2 className="text-[1.45rem] font-semibold tracking-[-0.02em] text-fg">{label}</h2>
@@ -156,7 +156,7 @@ function Tags({ tags }: { tags: string[] }) {
   return (
     <ul className="mt-3 flex flex-wrap gap-2" aria-label="Technologies">
       {tags.map((t) => (
-        <li key={t} className="rounded-full bg-accent-dim px-3 py-1 font-ui text-xs text-accent">
+        <li key={t} className="rounded-full bg-white/[0.06] px-3 py-1 font-ui text-xs text-muted">
           {t}
         </li>
       ))}
@@ -173,7 +173,7 @@ function JobRow({ job }: { job: Job }) {
         <h3 className="font-semibold leading-snug text-fg">
           {job.role} <span className="text-faint">·</span> {job.company}
         </h3>
-        <p className="mt-2 text-sm">{job.summary}</p>
+        <p className="mt-2 text-[15px] leading-relaxed">{job.summary}</p>
         <Tags tags={job.tags} />
       </div>
     </div>
@@ -209,7 +209,7 @@ function ProjectRow({ project: p }: { project: Project }) {
           )}
         </h3>
         <p className="mt-1 font-ui text-sm font-medium text-accent">→ {p.metric}</p>
-        <p className="mt-2 text-sm">{p.summary}</p>
+        <p className="mt-2 text-[15px] leading-relaxed">{p.summary}</p>
         <Tags tags={p.tags} />
       </div>
     </div>
@@ -250,7 +250,7 @@ function IconLink({
         title={label}
         target={external ? "_blank" : undefined}
         rel={external ? "noreferrer" : undefined}
-        className={`block text-muted transition-colors ${className}`}
+        className={`block p-2 text-muted transition-colors ${className}`}
       >
         {children}
       </a>
@@ -260,7 +260,7 @@ function IconLink({
 
 function Footer() {
   return (
-    <footer id="contact" className="pb-16 sm:pb-0">
+    <footer id="contact" className="scroll-mt-16 pb-16 sm:pb-0 lg:scroll-mt-24">
       <Reveal>
         <p className="text-[1.45rem] font-semibold tracking-[-0.02em] text-fg">Get in touch</p>
         <Email

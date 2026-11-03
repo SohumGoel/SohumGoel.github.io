@@ -26,13 +26,13 @@ export default function Nav() {
   }, []);
 
   return (
-    <nav aria-label="In-page" className="mt-16 hidden lg:block">
+    <nav aria-label="In-page" className="mt-16 hidden lg:block short:mt-10 shorter:hidden">
       <ul className="space-y-1">
         {sections.map((id) => {
           const on = active === id;
           return (
             <li key={id}>
-              <a href={`#${id}`} className="group flex items-center py-3" aria-current={on ? "true" : undefined}>
+              <a href={`#${id}`} className="group flex items-center py-3 short:py-2" aria-current={on ? "true" : undefined}>
                 <span
                   className={`mr-4 h-px transition-all duration-300 ${
                     on ? "w-16 bg-accent" : "w-8 bg-faint group-hover:w-16 group-hover:bg-fg"

@@ -10,7 +10,9 @@ export const metadata: Metadata = {
     title: `${profile.name} · AI Engineer`,
     description: profile.tagline,
     type: "website",
+    images: [{ url: profile.headshot, width: 320, height: 320, alt: profile.name }],
   },
+  twitter: { card: "summary" },
 };
 
 export const viewport: Viewport = { themeColor: "#0a0c0b" };

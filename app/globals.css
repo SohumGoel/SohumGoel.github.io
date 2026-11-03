@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Short laptop screens: the sticky sidebar tightens up (short) and drops the section nav (shorter)
+   so the links and résumé button never fall off the bottom. */
+@custom-variant short (@media (min-width: 64rem) and (max-height: 820px));
+@custom-variant shorter (@media (min-width: 64rem) and (max-height: 680px));
+
 @theme {
   --color-bg: #0a0c0b;
   --color-fg: #f3f6f4;
@@ -17,7 +22,6 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 4rem;
 }
 
 body {
@@ -26,6 +30,13 @@ body {
   background: var(--color-bg);
   color: var(--color-muted);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Keyboard focus: one accent ring everywhere instead of the browser default. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 ::selection {
